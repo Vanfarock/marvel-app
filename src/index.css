@@ -1,5 +1,30 @@
-body {
+:root {
+  --horizontal-distance: 15px;
+  --page-width: auto;
+  --page-max-width: auto;
+}
+
+@media only screen and (min-width: 500px) {
+  :root {
+    --horizontal-distance: 20px;
+  }
+}
+
+@media only screen and (min-width: 1360px) {
+  :root {
+    --horizontal-distance: auto;
+    --page-width: 100%;
+    --page-max-width: 1320px;
+  }
+}
+
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,7 +32,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+a {
+  text-decoration: none;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
 }
