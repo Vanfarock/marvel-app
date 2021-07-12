@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
 export const NavbarContainer = styled.nav`
+  margin-bottom: 30px;
+
   background: ${(props) => props.theme.foregroundColor};
 
   & * {
