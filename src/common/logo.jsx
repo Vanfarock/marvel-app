@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import MarvelLogo from '../assets/images/marvel-logo.svg';
 
 const StyledLogo = styled.img`
@@ -7,7 +8,9 @@ const StyledLogo = styled.img`
 `;
 
 const Logo = () => (
-  <StyledLogo src={MarvelLogo} alt="Marve logo" />
+  <Link to="/">
+    <StyledLogo src={MarvelLogo} alt="Marve logo" />
+  </Link>
 );
 
 export default Logo;

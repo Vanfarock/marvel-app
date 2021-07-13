@@ -5,6 +5,10 @@ export const light = {
   foregroundColor: '#282424',
   fontColorOnForeground: 'white',
 
+  fadedFontColor: '#767676',
+
+  borderColor: '#BDBDBD',
+
 };
 
 export const dark = {

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getComics } from '../../services/comicsService';
+import Grid from '../../components/grid';
 import {
   ComicsContainer,
   Title,
-  Results,
+  SearchInput,
   Comic,
   ComicTitle,
   ComicThumbnail,
@@ -20,10 +21,24 @@ const Comics = () => {
       });
   }, []);
 
+  const handleSearch = (query) => {
+    getComics(query)
+      .then(({ data: response }) => {
+        setComics(response.data.results);
+      });
+  };
+
   return (
     <ComicsContainer>
       <Title>Comics</Title>
-      <Results>
+      <SearchInput
+        id="comicSearch"
+        type="search"
+        name="comicName"
+        placeholder="Search for a comic"
+        onChange={(e) => handleSearch(e.target.value)}
+      />
+      <Grid title="Comics">
         {comics.map((comic) => (
           <Link key={comic.id} to={`/comics/${comic.id}`}>
             <Comic>
@@ -35,7 +50,7 @@ const Comics = () => {
             </Comic>
           </Link>
         ))}
-      </Results>
+      </Grid>
     </ComicsContainer>
   );
 };
