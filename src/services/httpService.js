@@ -9,6 +9,7 @@ const httpService = {
   post: axios.post,
   put: axios.put,
   delete: axios.delete,
+  ...axios,
 };
 
 export default httpService;

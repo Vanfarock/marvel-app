@@ -4,7 +4,9 @@ import { ThemeProvider } from 'styled-components';
 import { light } from './styles/theme';
 import Navbar from './components/navbar';
 import Comics from './pages/comics';
+import Characters from './pages/characters/index';
 import flexComponent from './common/flexComponent';
+import CharacterDetails from './pages/characterDetails/index';
 
 const App = () => (
   <ThemeProvider theme={light}>
@@ -13,6 +15,9 @@ const App = () => (
 
       <Switch>
         <Route path="/comics" component={flexComponent(Comics)} />
+
+        <Route path="/characters/:id" component={flexComponent(CharacterDetails)} />
+        <Route path="/characters" component={flexComponent(Characters)} />
       </Switch>
     </BrowserRouter>
   </ThemeProvider>

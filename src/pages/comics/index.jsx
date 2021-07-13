@@ -1,11 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { getComics } from '../../services/comicsService';
-import Grid from '../../components/grid';
+import SearchPage from '../../components/searchPage/index';
 import {
-  ComicsContainer,
-  Title,
-  SearchInput,
   Comic,
   ComicTitle,
   ComicThumbnail,
@@ -13,32 +10,34 @@ import {
 
 const Comics = () => {
   const [comics, setComics] = useState([]);
+  const [page, setPage] = useState(0);
 
-  useEffect(() => {
-    getComics()
+  const searchComics = () => {
+    getComics(page)
       .then(({ data: response }) => {
         setComics(response.data.results);
       });
-  }, []);
+  };
 
-  const handleSearch = (query) => {
-    getComics(query)
+  const handleSearch = (e) => {
+    const newQuery = e.target.value;
+
+    const newPage = 0;
+    setPage(0);
+
+    getComics(newPage, newQuery)
       .then(({ data: response }) => {
         setComics(response.data.results);
       });
   };
 
   return (
-    <ComicsContainer>
-      <Title>Comics</Title>
-      <SearchInput
-        id="comicSearch"
-        type="search"
-        name="comicName"
-        placeholder="Search for a comic"
-        onChange={(e) => handleSearch(e.target.value)}
-      />
-      <Grid title="Comics">
+    <div>
+      <SearchPage
+        title="Comics"
+        onSearch={handleSearch}
+        onLoad={searchComics}
+      >
         {comics.map((comic) => (
           <Link key={comic.id} to={`/comics/${comic.id}`}>
             <Comic>
@@ -50,8 +49,8 @@ const Comics = () => {
             </Comic>
           </Link>
         ))}
-      </Grid>
-    </ComicsContainer>
+      </SearchPage>
+    </div>
   );
 };
 Comics.propTypes = {};

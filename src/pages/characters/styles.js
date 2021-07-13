@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Comic = styled.div`
+export const Character = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -8,15 +8,14 @@ export const Comic = styled.div`
   height: 100%;
 `;
 
-export const ComicThumbnail = styled.img`
+export const CharacterImage = styled.img`
   object-fit: contain;
 
   width: 100%;
 `;
 
-export const ComicTitle = styled.h4`
+export const CharacterName = styled.h4`
   margin-top: 5px;
-  font-size: 16px;
 
   overflow: hidden;
   text-overflow: ellipsis;

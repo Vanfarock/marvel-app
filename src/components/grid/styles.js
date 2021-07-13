@@ -8,7 +8,7 @@ export const GridContainer = styled.div`
 export const Results = styled.div`
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  grid-gap: 10px;
+  grid-gap: 30px 10px;
 
   margin-top: 15px;
 
@@ -17,12 +17,8 @@ export const Results = styled.div`
   & > a {
     color: ${(props) => props.theme.fontColorOnBackground};
   }
-  
-  @media only screen and (min-width: 520px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
 
-  @media only screen and (min-width: 620px) {
+  @media only screen and (min-width: 480px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
